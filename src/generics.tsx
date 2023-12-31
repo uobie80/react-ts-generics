@@ -72,3 +72,20 @@ interface DateProps {
 const DateComponent: FauxReactFunctionComponent<DateProps> = props => (
     <time dateTime={props.iso8601Date}>{props.message}</time>
 )
+// Longest substring between two equal characters
+function maxLengthBetweenEqualCharacters(s: string): number {
+
+    let ans: number = -1;
+    const first_index: any = new Map<string, number>();
+
+    for (let i: number = 0; i < s.length; i++) {
+        if (first_index.has(s[i]))
+            ans = Math.max(ans, i - first_index.get(s[i]) - 1)
+    } else {
+        first_index.set(s[i], i);
+    }
+}
+return ans
+};
+
+
