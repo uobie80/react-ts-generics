@@ -7,7 +7,7 @@ const strArray = wrapInArray<string>("hello generics");
 const numArray = wrapInArray<number>(42);
 
 
-//Constraining and extending trypes
+//Constraining and extending types
 
 interface ObjectArrayType {
     name: string;
