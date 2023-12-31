@@ -76,16 +76,16 @@ const DateComponent: FauxReactFunctionComponent<DateProps> = props => (
 function maxLengthBetweenEqualCharacters(s: string): number {
 
     let ans: number = -1;
-    const first_index: any = new Map<string, number>();
+    const first_index = new Map<string, number>();
 
     for (let i: number = 0; i < s.length; i++) {
-        if (first_index.has(s[i]))
+        if (first_index.has(s[i])) {
             ans = Math.max(ans, i - first_index.get(s[i]) - 1)
-    } else {
-        first_index.set(s[i], i);
+        } else {
+            first_index.set(s[i], i);
+        }
     }
-}
-return ans
+    return ans
 };
 
 
