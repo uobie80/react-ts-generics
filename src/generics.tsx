@@ -58,5 +58,17 @@ function filter<Type>(arr: Type[], func: (arg: Type) => boolean): Type[] {
 function filter2<Type, Func extends (arg: Type) => boolean>(arr: Type[], func: Func): Type[] {
     return arr.filter(func)
 }
+//Typing React Components
+type FauxReactFunctionComponent<Props extends {}> = (
+    props: Props,
+    context?: any
+) => FauxReactFunctionComponent<any> | null | JSX.Element
 
+interface DateProps {
+    iso8601Date: string;
+    message: string
+}
 
+const DateComponent: FauxReactFunctionComponent<DateProps> = props => (
+    <time dateTime={props.iso8601Date}>{props.message}</time>
+)
