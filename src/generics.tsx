@@ -9,7 +9,6 @@ const numArray = wrapInArray<number>(42);
 
 //Constraining and extending trypes
 
-
 interface ObjectArrayType {
     name: string;
     age: number;
@@ -36,5 +35,28 @@ function renderToScreen<Type extends Drawable>(input: Type[]) {
 }
 
 const objectsWithDraw = [{ draw: () => { }, reset: () => { } }, { draw: () => { } }]
+
+renderToScreen([[{}], { draw: () => { } }])
+
+
+//Working with multiple type parameters
+function myMap<Input, Output>(arr: Input[], func: (arg: Input) => Output): Output[] {
+    return arr.map(func)
+}
+
+const strArr = ["1", "2", "3"]
+const numArr = [1, 2, 3]
+const mixedArr = [1, 2, 3, "a", "b", "c"]
+
+const newVal = myMap(mixedArr, (val) => val);
+
+
+function filter<Type>(arr: Type[], func: (arg: Type) => boolean): Type[] {
+    return arr.filter(func)
+}
+
+function filter2<Type, Func extends (arg: Type) => boolean>(arr: Type[], func: Func): Type[] {
+    return arr.filter(func)
+}
 
 
